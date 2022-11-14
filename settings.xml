@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <!--指定打包版本，类型配置在meven->profiles标签下,deb为profile的id-->
+    <!--ubuntu为deb， centos为rpm-->
+    <!--还有种打包方式就是在打包命令后加上“-P profile的id”-->
+    <activeProfiles>
+        <activeProfile>deb</activeProfile>
+    </activeProfiles>
+
+    <!-- 指定maven依赖本地仓库路径 -->
+    <localRepository>/opt/maven_repository</localRepository>
+    <mirrors>
+        <!--用于解决maven3.81以上仓库镜像是 http 而不是https 就会被拦截禁止访问-->
+        <mirror>
+            <id>insecure-repo</id>
+            <mirrorOf>external:http:*</mirrorOf>
+            <url>http://repository.apache.org/snapshots</url>
+            <blocked>false</blocked>
+        </mirror>
+        <!-- 国内镜像 -->
+        <mirror>
+            <id>aliyun proxy central</id>
+            <url>https://maven.aliyun.com/repository/central</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+
+        <mirror>
+            <id>aliyun proxy jcenter</id>
+            <url>https://maven.aliyun.com/repository/jcenter</url>
+            <mirrorOf>jcenter</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>aliyun proxy google</id>
+            <url>https://maven.aliyun.com/repository/google</url>
+            <mirrorOf>google</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>aliyun proxy spring</id>
+            <url>https://maven.aliyun.com/repository/spring</url>
+            <mirrorOf>spring</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>aliyun proxy spring-plugin</id>
+            <url>https://maven.aliyun.com/repository/spring-plugin</url>
+            <mirrorOf>spring-plugin</mirrorOf>
+        </mirror>
+        <!--覆盖项目中的失效的请求仓库-->
+        <mirror>
+            <id>cdh repo</id>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos</url>
+            <mirrorOf>cdh.repo</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>cdh releases repo</id>
+            <url>https://repository.cloudera.com/artifactory/cdh-releases-rcs</url>
+            <mirrorOf>cdh.releases.repo</mirrorOf>
+        </mirror>
+
+
+        <!-- 中央仓库 -->
+        <!--
+             <mirror>
+                    <id>maven repository</id>
+                    <url>https://mvnrepository.com/</url>
+                    <mirrorOf>*</mirrorOf>
+                 </mirror>
+        -->
+    </mirrors>
+
+</settings>
+
+
